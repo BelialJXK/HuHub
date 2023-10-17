@@ -1,0 +1,3 @@
+# Test stage
+FROM build as test
+RUN mvn test

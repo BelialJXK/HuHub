@@ -1,0 +1,54 @@
+server:
+  port: 7070
+
+#satoken
+sa-token:
+  token-name: token
+  timeout: 2592000
+  activity-timeout: -1
+  is-concurrent: true
+  is-share: true
+  token-style: uuid
+  is-log: false
+
+#swagger path,mysql
+spring:
+  mvc:
+    pathmatch:
+      matching-strategy: ant-path-matcher
+  datasource:
+    url: jdbc:mysql://162.14.98.5:3306/bang-center-sql?useUnicode=true&characterEncoding=UTF8&autoReconnect=true&zeroDateTimeBehavior=convertToNull&useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+    password: 021288qQ
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      initial-size: 8
+      max-active: 16
+      min-idle: 1
+      max-wait: 60000
+
+# mybatis
+mybatis:
+  config-location: "classpath:/mybatis/mybatis-config.xml"
+
+# logger
+logging:
+  file:
+    path: bang-center/logs/bangcenter.log
+
+# wx
+wx:
+  app-id: wx396f8283b1149953
+  app-secret: bb3946ae77e97ae8fd23f768fb9266bc
+
+#OSS
+oss:
+  endpoint:         oss-cn-beijing.aliyuncs.com
+  accessKeyId:      LTAI5tGukxKuyznEbPKcAMPQ
+  accessKeySecret:  YGVutiSGYF46QPE7bzrFLp3hm0DqOl
+  bucketName:       hu-hub
+  baseUrl:          https://hu-hub.oss-cn-beijing.aliyuncs.com/
+
+anon:
+  prefix:  "test/prefix"

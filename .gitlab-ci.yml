@@ -1,0 +1,76 @@
+image: docker:dind
+
+stages:
+  - prepare
+  - deploy
+  - publish
+
+variables:
+  REGISTRY_HOST: 34.118.84.61:5000
+  IMAGE_NAME: bang-center
+  IMAGE_BUILD: build
+  IMAGE_TEST: test
+  IMAGE_PACKAGE: package
+  CONTAINER_NAME: "bang-center-container"
+
+build:
+  stage: prepare
+  tags:
+    - center
+  script:
+    - echo "============ Start Build ==============="
+    - docker build -t $IMAGE_BUILD -f CI/Dockerfile-Build .
+    - docker tag  $IMAGE_BUILD $REGISTRY_HOST/$IMAGE_BUILD
+    - docker push $REGISTRY_HOST/$IMAGE_BUILD
+
+test:
+  stage: prepare
+  tags:
+    - center
+  script:
+    - echo "============ Start Test ==============="
+    - docker build -t $IMAGE_TEST -f CI/Dockerfile-Test .
+    - docker tag $IMAGE_TEST $REGISTRY_HOST/$IMAGE_TEST
+    - docker push $REGISTRY_HOST/$IMAGE_TEST
+
+package:
+  stage: prepare
+  tags:
+    - center
+  script:
+    - docker build -t $IMAGE_PACKAGE -f CI/Dockerfile-Package .
+    - docker tag $IMAGE_PACKAGE $REGISTRY_HOST/$IMAGE_PACKAGE
+    - docker push $REGISTRY_HOST/$IMAGE_PACKAGE
+
+
+deploy:
+  stage: deploy
+  tags:
+    - center
+  script:
+    - docker build -t $IMAGE_NAME .
+
+
+push:
+  stage: publish
+  tags:
+    - center
+  script:
+    - echo "============ Start Deployment ==============="
+    - docker tag $IMAGE_NAME $REGISTRY_HOST/$IMAGE_NAME
+    - docker push $REGISTRY_HOST/$IMAGE_NAME
+
+clean:
+  stage: publish
+  tags:
+    - center
+  script:
+    - export container_name=$CONTAINER_NAME
+    - sh CI/ci.sh
+
+install:
+  stage: publish
+  tags:
+    - center
+  script:
+    - docker run -d --name $CONTAINER_NAME -p 7070:7070 $REGISTRY_HOST/$IMAGE_NAME
