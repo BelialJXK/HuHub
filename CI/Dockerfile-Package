@@ -1,0 +1,3 @@
+# Package stage
+FROM build as package
+RUN mvn package -Dmaven.test.skip=true
