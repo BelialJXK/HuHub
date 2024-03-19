@@ -21,13 +21,6 @@
         <module>bang-center-common</module>
         <module>bang-center-user</module>
         <module>bang-center-notify</module>
-        <module>bang-center-post</module>
-        <module>bang-center-anon</module>
-        <module>bang-center-commpost</module>
-        <module>bang-center-material</module>
-        <module>bang-center-secondhand</module>
-        <module>bang-center-active</module>
-        <module>bang-center-admin</module>
 
     </modules>
     <dependencies>

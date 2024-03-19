@@ -31,41 +31,7 @@
             <artifactId>bang-center-notify</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
-        <dependency>
-            <groupId>hu.helper</groupId>
-            <artifactId>bang-center-anon</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>hu.helper</groupId>
-            <artifactId>bang-center-admin</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>hu.helper</groupId>
-            <artifactId>bang-center-commpost</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>hu.helper</groupId>
-            <artifactId>bang-center-post</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>hu.helper</groupId>
-            <artifactId>bang-center-material</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>hu.helper</groupId>
-            <artifactId>bang-center-secondhand</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>hu.helper</groupId>
-            <artifactId>bang-center-active</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-        </dependency>
+
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
